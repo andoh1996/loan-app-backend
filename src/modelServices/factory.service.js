@@ -1,3 +1,4 @@
+const { query } = require("express");
 
 async function saveToDb(Model, Data, options = {}) {
   try {
@@ -248,7 +249,7 @@ async function countDocument(model, query) {
 
 async function updateIncreaseOrDecrease (model, query, updateItem) {
   try {
-    const update = await model.findByIdAndUpdate(
+    const update = await model.findOneAndUpdate(
       query,
       updateItem,
       { new: true } 
@@ -260,6 +261,14 @@ async function updateIncreaseOrDecrease (model, query, updateItem) {
   }
 }
 
+const aggregate = async(Model, query) => {
+ try {
+   const results = Model.aggregate(query);
+  return results
+ } catch (error) {
+   throw error; 
+ }
+}
 
 
 module.exports = {
@@ -281,5 +290,6 @@ module.exports = {
    updateAndAddToArray,
    countDocument,
    findOneAndUpdate,
-   updateIncreaseOrDecrease
+   updateIncreaseOrDecrease,
+   aggregate
 };

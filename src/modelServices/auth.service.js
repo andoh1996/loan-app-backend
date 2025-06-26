@@ -41,10 +41,10 @@ async function userLogin({ email, password }) {
   
       // Reset login attempts on successful login
         user.resetPasswordAttempt()
-        
+
       // Generate an access token
       const token = auth.generateAccessKey({
-        userID: user.userID,
+        staffID: user.staffID,
         verifiedUser: user.verifiedUser,
         role: user.role,
       });
@@ -55,6 +55,7 @@ async function userLogin({ email, password }) {
         lastName: user.lastName,
         email: user.email,
         role: user.role,
+        staffID: user.staffID,
         verifiedUser: user.verifiedUser,
         token
       };

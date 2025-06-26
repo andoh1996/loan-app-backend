@@ -121,6 +121,7 @@ app.use('/employees', require('./src/routes/employees.route'));
 app.use('/customers', require('./src/routes/customer.route'));
 
 app.use('/loans', require('./src/routes/loan.route'));
+app.use('/repayment', require('./src/routes/repayment.route'));
 
 
 
